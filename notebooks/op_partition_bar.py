@@ -162,7 +162,7 @@ def draw():
         ax.legend(prop={'size': legend_size})
 
         fig.tight_layout()
-        fig.set_figheight(4)
+        fig.set_figheight(line_fig_height)
 
         save_figure('op_partition_bar')
         plt.show()

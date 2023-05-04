@@ -146,7 +146,7 @@ def draw():
 
         
         fig.tight_layout()
-        fig.set_figheight(4)
+        fig.set_figheight(line_fig_height)
 
         save_figure('frame_bar')
         plt.show()
