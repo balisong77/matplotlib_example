@@ -29,6 +29,9 @@ labels = feature_nums
 
 x_ticks = list(range(len(labels)))
 
+# 数据过于密集，调小marksize
+marker_size = 10
+
 fig_config = {
     'ylabel' : y_label_cores,   #x轴标签名
     'xlabel' : x_label_cores , #y轴标签名
@@ -42,7 +45,7 @@ line_config1 = {
     'matplot_config' : {
         'color' : linecolor[0], 
         'linewidth' : line_width, 
-        'label' : unimon_ebpf,  
+        'label' : ebpf,  
         'marker' : markers[0], 
         'markersize' : marker_size
     },
@@ -62,7 +65,7 @@ line_config2 = {
     'matplot_config' : {
         'color' : linecolor[1], 
         'linewidth' : line_width, 
-        'label' : unimon_lkm,
+        'label' : lkm,
         'marker' : markers[1],
         'markersize' : marker_size
     },
@@ -82,7 +85,7 @@ line_config3= {
     'matplot_config' : {
         'color' : linecolor[2], 
         'linewidth' : line_width, 
-        'label' : unimon_noinv,  
+        'label' : noinv,  
         'marker' : markers[2], 
         'markersize' : marker_size
     },
@@ -103,7 +106,7 @@ line_config4= {
     'matplot_config' : {
         'color' : linecolor[3], 
         'linewidth' : line_width, 
-        'label' : unimon_inv,  
+        'label' : inv,  
         'marker' : markers[3], 
         'markersize' : marker_size
     },
@@ -155,14 +158,14 @@ def draw():
         ax.plot(x_ticks, data['unimon-inv'], **line_config4["matplot_config"])
         ax.plot(x_ticks, optimal, **line_config6["matplot_config"])
 
+        ax.set_ylim(0,100)
         # Add some text for labels, title and custom x-axis tick labels, etc.
-        ax.set_ylabel(fig_config['ylabel'])
-        ax.set_xlabel(fig_config['xlabel'])
+        ax.set_xlabel(fig_config['xlabel'],fontsize=label_size)
+        ax.set_ylabel(fig_config['ylabel'],fontsize=27)
 
         ax.set_xticks(x_ticks)
         ax.set_xlim(0, len(labels) -1)  #设置 x轴范围
         ax.set_xticklabels(labels)
-
         #设置x轴刻度间隔
         for i, tick in enumerate(ax.get_xaxis().get_ticklabels()):
             if i == 0:
@@ -177,10 +180,10 @@ def draw():
         ax.spines['left'].set_position(fig_config["spine_config"]["left"])
         ax.spines['right'].set_position(fig_config["spine_config"]["right"])
 
-        ax.legend()
+        ax.legend(prop={'size': legend_size})
 
         fig.tight_layout()
-
+        fig.set_figheight(line_fig_height)
         save_figure('unimon_core_line')
         plt.show()
     

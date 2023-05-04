@@ -31,7 +31,7 @@ line_config1 = {
     'matplot_config' : {
         'color' : linecolor[0], 
         'linewidth' : line_width, 
-        'label' : countmin_ebpf,  
+        'label' : ebpf,  
         'marker' : markers[0], 
         'markersize' : marker_size
     },
@@ -51,7 +51,7 @@ line_config2= {
     'matplot_config' : {
         'color' : linecolor[1], 
         'linewidth' : line_width, 
-        'label' : countmin_lkm,  
+        'label' : lkm,  
         'marker' : markers[1], 
         'markersize' : marker_size
     },
@@ -82,12 +82,14 @@ def draw():
         # ax.plot(x_ticks, y_3, **line_config3["matplot_config"])
 
         # Add some text for labels, title and custom x-axis tick labels, etc.
-        ax.set_ylabel(fig_config['ylabel'])
-        ax.set_xlabel(fig_config['xlabel'])
+        ax.set_xlabel(fig_config['xlabel'],fontsize=label_size)
+        ax.set_ylabel(fig_config['ylabel'],fontsize=27)
 
         ax.set_xticks(x_ticks)
         ax.set_xlim(0, len(labels) -1)  #设置 x轴范围
         ax.set_xticklabels(labels)
+
+        # ax.set_yticklabels(fontsize=tick_size)
 
         #设置x轴刻度间隔
         for i, tick in enumerate(ax.get_xaxis().get_ticklabels()):
@@ -96,17 +98,17 @@ def draw():
             elif (i+1) % 5 != 0:
                 tick.set_visible(False)
 
-        # ax.set_ylim(100000, 1000000)
+        ax.set_ylim(0, 125)
         # ax.set_yscale('log', base = 10, subs = [10])
 
         #设置纵坐标轴
         ax.spines['left'].set_position(fig_config["spine_config"]["left"])
         ax.spines['right'].set_position(fig_config["spine_config"]["right"])
 
-        ax.legend()
+        ax.legend(prop={'size': legend_size})
 
         fig.tight_layout()
-    
+        fig.set_figheight(line_fig_height)
         save_figure('challenge2A_line')
         plt.show()
     

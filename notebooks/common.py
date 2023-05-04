@@ -21,12 +21,19 @@ markers = ['^', '*', 'o', 's', 'v', 'p']
 linecolor = ["green","blue","purple","orange", "brown", "olive"]
 barcolor = ["lightgreen","cornflowerblue","thistle","peachpuff", "olivedrab"]
 hatch_style = ['x', '+', '/', '-', 'o', 'O', '.', '*']
-y_label_cores = "Throughput (Mpkt/s)"
-x_label_cores = "CPU cores"
-y_label_flows = "Throughput (Mpkt/s)"
-x_label_flows = "Flows"
-marker_size = 10
+y_label_cores = "Packet rate (Mpkts/s)"
+x_label_cores = "# CPU cores"
+y_label_flows = "Packet rate (Mpkts/s)"
+x_label_flows = "# Flows"
+marker_size = 15
 line_width = 3
+
+label_size = 29
+tick_size = 27
+
+line_fig_height = 5
+
+legend_size = 25
 
 countmin = 'Count-Min'
 nitro = 'Nitro Sketch'
@@ -34,15 +41,15 @@ unimon = 'UnivMon Sketch'
 load_balancer = 'Load Balancer'
 
 countmin_ebpf = 'Count-Min-eBPF'
-countmin_lkm = 'Count-Min-LKM'
+countmin_lkm = 'Count-Min-BASE'
 
 nitro_ebpf = 'Nitro-eBPF'
-nitro_lkm = 'Nitro-LKM'
+nitro_lkm = 'Nitro-BASE'
 nitro_inv = 'Nitro-INV'
 nitro_noinv = 'Nitro-NOINV'
 
 unimon_ebpf = 'UnivMon-eBPF'
-unimon_lkm = 'UnivMon-LKM'
+unimon_lkm = 'UnivMon-BASE'
 unimon_inv = 'UnivMon-INV'
 unimon_noinv = 'UnivMon-NOINV'
 
@@ -55,6 +62,12 @@ carray_hyper = 'Carray-HyperCom'
 lpm = 'LPM'
 lpm_ebpf = 'LPM-eBPF'
 lpm_hyper = 'LPM-HyperCom'
+
+ebpf = 'eBPF'
+lkm = 'BASE'
+inv = 'INV'
+noinv = 'NOINV'
+hypercom = 'BASE'
 
 spinlock = 'Spinlock'
 

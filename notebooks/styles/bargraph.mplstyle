@@ -76,7 +76,7 @@ axes.grid: True   #展示网格
 axes.grid.axis: y #只展示y轴网格
 axes.grid.which:  major #展示主刻度的网格
 
-axes.labelsize: 25   #坐标轴标签的字体大小
+axes.labelsize: 40   #坐标轴标签的字体大小
 axes.labelpad: 4.0  #标签和坐标轴的位置
 axes.labelweight: normal
 axes.labelcolor: black
@@ -126,5 +126,5 @@ grid.linestyle: --          # solid
 grid.linewidth: 1.2        # in points
 grid.alpha:     1.0        # transparency, between 0.0 and 1.0
 
-xtick.labelsize: 25
+xtick.labelsize: 21
 ytick.labelsize: 25

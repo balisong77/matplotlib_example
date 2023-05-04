@@ -5,7 +5,7 @@ from common import *
 import numpy as np 
 
 ## data 
-feature_lens = ['non-inv-lookup', 'non-inv-update','inv-AC-0','inv-AC-1','inv-AC-2','inv-AC-3','inv-AC-4','inv-AC-5','inv-AS-0','inv-AS-1','inv-AS-2','inv-AS-3','inv-AS-4','inv-AS-5']
+feature_lens = ['NOINV-lookup', 'NOINV-update','INV-AC-0','INV-AC-1','INV-AC-2','INV-AC-3','INV-AC-4','INV-AC-5','INV-AS-0','INV-AS-1','INV-AS-2','INV-AS-3','INV-AS-4','INV-AS-5']
 
 styles = get_default_bar_style_sheets()
 
@@ -17,7 +17,7 @@ data = [20,21,32,35,29,31,29,33,32,32,35,31,31,32]
 labels = feature_lens
 
 fig_config = {
-    'xlabel' : 'Frames',   #x轴标签名
+    'xlabel' : '',   #x轴标签名
     'ylabel' : 'Time (ns)' , #y轴标签名
     # 'ylabel2' : 'Speedup',
     'bar_width' : 0.50, #每一根柱子的宽度
@@ -138,35 +138,15 @@ def draw():
         # ax.set_ylim(1, 1e12)
         # ax.set_yscale('log', base = 10, subs = [10])
         # ax.set_ylim(bottom=1e6)
-        ax.set_ylabel(fig_config['ylabel'])
-        ax.set_xlabel(fig_config['xlabel'])
+        ax.set_ylabel(fig_config['ylabel'],fontsize=label_size)
+        ax.set_xlabel(fig_config['xlabel'],fontsize=label_size)
         ax.set_xticks(x)
-        ax.set_xticklabels(labels,rotation=45,fontsize=15)
+        ax.set_xticklabels(labels,rotation=45,fontsize=17)
 
 
-
-        # ax2 = ax.twinx()
-        # line1 = ax2.plot(x + cal_bar_offset(1, 3, width), l_1, **line_config1["matplot_config"])
-        # line2 = ax2.plot(x + cal_bar_offset(2, 3, width), l_2, **line_config2["matplot_config"])
-        
-        # ax2.set_ylim(1, 1000)
-        # ax2.set_yscale('log', base = 10, subs = [10])
-        # ax2.set_ylabel(fig_config['ylabel2'])
-
-        # ax2.grid(False)
-        
-        # lines = line1 + line2
-        # bars = [bar1, bar2, bar3, bar4]
-        
-        
-        # #在一个图层上展示 图例
-        # #分开zhanshi 
-        
-        # l1 = plt.legend(bars, [b.get_label() for b in bars], loc = "upper left", framealpha = 0.6)
-        # l2 = plt.legend(lines, [l.get_label() for l in lines],loc = "upper right", framealpha = 0.6)
-        # plt.gca().add_artist(l1)
         
         fig.tight_layout()
+        fig.set_figheight(4)
 
         save_figure('frame_bar')
         plt.show()

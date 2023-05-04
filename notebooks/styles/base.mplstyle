@@ -139,7 +139,7 @@ xtick.major.width:   0.8     # major tick width in points
 xtick.major.pad:     3.5     # distance to major tick label in points
 xtick.color:   black   # color of the ticks
 #xtick.labelcolor:  black
-xtick.labelsize:   medium
+xtick.labelsize:   30
 xtick.direction:   in    # direction: {in, out, inout}
 xtick.minor.visible: False   # visibility of minor ticks on x-axis
 xtick.major.bottom:  True    # draw x axis bottom major ticks
@@ -152,7 +152,7 @@ ytick.major.width:   0.8     # major tick width in points
 ytick.major.pad:     3.5     # distance to major tick label in points
 ytick.color:         black   # color of the ticks
 #ytick.labelcolor:    black # color of the tick labels or inherit from ytick.color
-ytick.labelsize:     medium  # font size of the tick labels
+ytick.labelsize:     30  # font size of the tick labels
 ytick.direction:     in     # direction: {in, out, inout}
 ytick.minor.visible: False   # visibility of minor ticks on y-axis
 ytick.alignment:     center_baseline  # alignment of yticks

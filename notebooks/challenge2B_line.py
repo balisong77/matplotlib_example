@@ -30,7 +30,7 @@ line_config1 = {
     'matplot_config' : {
         'color' : linecolor[0], 
         'linewidth' : line_width, 
-        'label' : unimon_ebpf,  
+        'label' : ebpf,  
         'marker' : markers[0], 
         'markersize' : marker_size
     },
@@ -50,7 +50,7 @@ line_config2 = {
     'matplot_config' : {
         'color' : linecolor[1], 
         'linewidth' : line_width, 
-        'label' : unimon_lkm,
+        'label' : lkm,
         'marker' : markers[1],
         'markersize' : marker_size
     },
@@ -70,7 +70,7 @@ line_config3= {
     'matplot_config' : {
         'color' : linecolor[2], 
         'linewidth' : line_width, 
-        'label' : unimon_noinv,  
+        'label' : noinv,  
         'marker' : markers[2], 
         'markersize' : marker_size
     },
@@ -91,7 +91,7 @@ line_config4= {
     'matplot_config' : {
         'color' : linecolor[3], 
         'linewidth' : line_width, 
-        'label' : unimon_inv,  
+        'label' : inv,  
         'marker' : markers[3], 
         'markersize' : marker_size
     },
@@ -123,8 +123,8 @@ def draw():
         # ax.plot(x_ticks, data['unimon-inv'], **line_config4["matplot_config"])
 
         # Add some text for labels, title and custom x-axis tick labels, etc.
-        ax.set_ylabel(fig_config['ylabel'])
-        ax.set_xlabel(fig_config['xlabel'])
+        ax.set_xlabel(fig_config['xlabel'], fontsize=label_size)
+        ax.set_ylabel(fig_config['ylabel'], fontsize=27)
 
         ax.set_xticks(x_ticks)
         ax.set_xlim(0, len(labels) -1)  #设置 x轴范围
@@ -137,17 +137,17 @@ def draw():
             elif (i+1) % 5 != 0:
                 tick.set_visible(False)
 
-        # ax.set_ylim(100000, 1000000)
+        ax.set_ylim(0, 80)
         # ax.set_yscale('log', base = 10, subs = [10])
 
         #设置纵坐标轴
         ax.spines['left'].set_position(fig_config["spine_config"]["left"])
         ax.spines['right'].set_position(fig_config["spine_config"]["right"])
 
-        ax.legend()
+        ax.legend(prop={'size': legend_size})
 
         fig.tight_layout()
-
+        fig.set_figheight(line_fig_height)
         save_figure('challenge2B_line')
         plt.show()
     

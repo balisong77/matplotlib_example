@@ -17,8 +17,8 @@ remaining = []
 labels = feature_lens
 
 fig_config = {
-    'xlabel' : 'Use case',   #x轴标签名
-    'ylabel' : 'Percentage' , #y轴标签名
+    'xlabel' : 'Different applications',   #x轴标签名
+    'ylabel' : '% execution time' , #y轴标签名
     # 'ylabel2' : 'Speedup',
     'bar_width' : 0.40, #每一根柱子的宽度
 }
@@ -135,13 +135,13 @@ def draw():
 
         
         ax.set_ylim(0,1)
-        ax.set_ylabel(fig_config['ylabel'])
-        ax.set_xlabel(fig_config['xlabel'])
+        ax.set_ylabel(fig_config['ylabel'],fontsize=27)
+        ax.set_xlabel(fig_config['xlabel'],fontsize=27)
         ax.set_xticks(x)
-        ax.set_xticklabels(labels,fontsize=20)
+        ax.set_xticklabels(labels)
         ax.legend(legend_label)
         fig.tight_layout()
-
+        fig.set_figheight(4)
         save_figure('partition_bar')
         plt.show()
     

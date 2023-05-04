@@ -32,8 +32,8 @@ remaining = []
 labels = feature_lens
 
 fig_config = {
-    'xlabel' : 'Use Case',   #x轴标签名
-    'ylabel' : 'Percentage' , #y轴标签名
+    'xlabel' : '',   #x轴标签名
+    'ylabel' : '% execution time' , #y轴标签名
     # 'ylabel2' : 'Speedup',
     'bar_width' : 0.20, #每一根柱子的宽度
 }
@@ -44,7 +44,7 @@ bar_config1 = {
         'color' : barcolor[0], 
         'edgecolor' : linecolor[0],
         'linewidth' : 3, 
-        'label' : 'eBPF',   #如果为一个数是全局的，否则每一个条上都标注
+        'label' : ebpf,   #如果为一个数是全局的，否则每一个条上都标注
         #tick_label : str or list of str, optional 设置是否在条上标注
         #xerr, yerrfloat or array-like of shape(N,) or shape(2, N), optional
         #ecolorc olor or list of color, default: 'black'
@@ -62,7 +62,7 @@ bar_config2 = {
         'color' : barcolor[1],
         'edgecolor' : linecolor[1],
         'linewidth' : 3, 
-        'label' : 'LKM',   #如果为一个数是全局的，否则每一个条上都标注
+        'label' : 'Data Struct',   #如果为一个数是全局的，否则每一个条上都标注
         #tick_label : str or list of str, optional 
         #xerr, yerrfloat or array-like of shape(N,) or shape(2, N), optional
         #ecolorc olor or list of color, default: 'black'
@@ -80,7 +80,7 @@ bar_config3 = {
         'color' : barcolor[2],
         'edgecolor' : linecolor[2],
         'linewidth' : 3, 
-        'label' : 'NOINV',   #如果为一个数是全局的，否则每一个条上都标注
+        'label' : noinv,   #如果为一个数是全局的，否则每一个条上都标注
         #tick_label : str or list of str, optional 
         #xerr, yerrfloat or array-like of shape(N,) or shape(2, N), optional
         #ecolorc olor or list of color, default: 'black'
@@ -98,7 +98,7 @@ bar_config4 = {
         'color' : barcolor[3],
         'edgecolor' : linecolor[3],
         'linewidth' : 3, 
-        'label' : 'INV',   #如果为一个数是全局的，否则每一个条上都标注
+        'label' : 'Overhead',   #如果为一个数是全局的，否则每一个条上都标注
         #tick_label : str or list of str, optional 
         #xerr, yerrfloat or array-like of shape(N,) or shape(2, N), optional
         #ecolorc olor or list of color, default: 'black'
@@ -146,17 +146,23 @@ def draw():
         bar2 = ax.bar(x, op_partition, width,bottom=total_partition, **bar_config4["matplot_config"])
 
         y_tick.append(0)
-        for i in range(11):
-            y_tick.append(0.1*i)
+        for i in range(6):
+            y_tick.append(0.2*i)
         ax.set_yticks(y_tick)
-        plt.tick_params(axis='y', labelsize=12)
+        # plt.tick_params(axis='y', labelsize=20)
+
         ax.set_ylim(0,1)
-        ax.set_ylabel(fig_config['ylabel'])
-        ax.set_xlabel(fig_config['xlabel'])
+
+        ax.set_xlabel(fig_config['xlabel'],fontsize=label_size)
+        ax.set_ylabel(fig_config['ylabel'],fontsize=25)
+        
         ax.set_xticks(x)
-        ax.set_xticklabels(labels,rotation=45,fontsize=15)
-        ax.legend(legend_label)
+        ax.set_xticklabels(labels,rotation=45,fontsize=17)
+
+        ax.legend(prop={'size': legend_size})
+
         fig.tight_layout()
+        fig.set_figheight(4)
 
         save_figure('op_partition_bar')
         plt.show()

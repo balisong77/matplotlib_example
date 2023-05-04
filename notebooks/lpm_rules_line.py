@@ -33,70 +33,10 @@ x_ticks = list(range(len(feature_nums)))
 
 fig_config = {
     'ylabel' : y_label_flows,   #x轴标签名
-    'xlabel' : "Rules" , #y轴标签名
+    'xlabel' : "# Rules" , #y轴标签名
     'spine_config' : {
         "left" : ("data", 0),
         "right" : ("data", len(labels) - 1)
-    }
-}
-
-line_config1 = {
-    'matplot_config' : {
-        'color' : linecolor[0], 
-        'linewidth' : line_width, 
-        'label' : spinlock,  
-        'marker' : markers[0], 
-        'markersize' : marker_size
-    },
-    'annotate_text_config' : {
-        "color" : linecolor[0],
-        "fontsize" : 30,
-        "fontweight" : "bold",
-        'ha' : 'center',
-        'textcoords' : 'offset pixels',
-        'xytext' : (0, 12),
-        'family' : "Calibri"
-        #"rotation" : 45
-    }
-}
-
-line_config2 = {
-    'matplot_config' : {
-        'color' : linecolor[1], 
-        'linewidth' : line_width, 
-        'label' : carray_ebpf,  
-        'marker' : markers[1], 
-        'markersize' : marker_size
-    },
-    'annotate_text_config' : {
-        "color" : linecolor[1],
-        "fontsize" : 30,
-        "fontweight" : "bold",
-        'ha' : 'center',
-        'textcoords' : 'offset pixels',
-        'xytext' : (0, 12),
-        'family' : "Calibri"
-        #"rotation" : 45
-    }
-}
-
-line_config3= {
-    'matplot_config' : {
-        'color' : linecolor[2], 
-        'linewidth' : line_width, 
-        'label' : carray_hyper,  
-        'marker' : markers[2], 
-        'markersize' : marker_size
-    },
-    'annotate_text_config' : {
-        "color" : linecolor[2],
-        "fontsize" : 30,
-        "fontweight" : "bold",
-        'ha' : 'center',
-        'textcoords' : 'offset pixels',
-        'xytext' : (0, -26),
-        'family' : "Calibri"
-        #"rotation" : 45
     }
 }
 
@@ -104,7 +44,7 @@ line_config4= {
     'matplot_config' : {
         'color' : linecolor[3], 
         'linewidth' : line_width, 
-        'label' : lpm_hyper,  
+        'label' : hypercom,  
         'marker' : markers[3], 
         'markersize' : marker_size
     },
@@ -124,7 +64,7 @@ line_config5= {
     'matplot_config' : {
         'color' : linecolor[4], 
         'linewidth' : line_width, 
-        'label' : lpm_ebpf,  
+        'label' : ebpf,  
         'marker' : markers[4], 
         'markersize' : marker_size
     },
@@ -178,8 +118,8 @@ def draw():
         ax.plot(x_ticks, optimal, **line_config6["matplot_config"])
 
         # Add some text for labels, title and custom x-axis tick labels, etc.
-        ax.set_ylabel(fig_config['ylabel'])
-        ax.set_xlabel(fig_config['xlabel'])
+        ax.set_xlabel(fig_config['xlabel'],fontsize=label_size)
+        ax.set_ylabel(fig_config['ylabel'],fontsize=27)
 
         ax.set_xticks(x_ticks)
         ax.set_xlim(0, len(labels) -1)  #设置 x轴范围
@@ -199,13 +139,10 @@ def draw():
         ax.spines['left'].set_position(fig_config["spine_config"]["left"])
         ax.spines['right'].set_position(fig_config["spine_config"]["right"])
 
-        ax.legend()
-        
-        
-        #ax.bar_label(rects1, padding=3)
-        #ax.bar_label(rects2, padding=3)
+        ax.legend(prop={'size': legend_size})
 
         fig.tight_layout()
+        fig.set_figheight(line_fig_height)
     
         save_figure('lpm_rules_line')
         plt.show()

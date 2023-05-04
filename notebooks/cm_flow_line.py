@@ -45,7 +45,7 @@ line_config1 = {
     'matplot_config' : {
         'color' : linecolor[0], 
         'linewidth' : line_width, 
-        'label' : countmin_ebpf,  
+        'label' : ebpf,  
         'marker' : markers[0], 
         'markersize' : marker_size
     },
@@ -65,7 +65,7 @@ line_config2= {
     'matplot_config' : {
         'color' : linecolor[1], 
         'linewidth' : line_width, 
-        'label' : countmin_lkm,  
+        'label' : lkm,  
         'marker' : markers[1], 
         'markersize' : marker_size
     },
@@ -116,8 +116,8 @@ def draw():
         ax.plot(x_ticks, optimal, **line_config6["matplot_config"])
 
         # Add some text for labels, title and custom x-axis tick labels, etc.
-        ax.set_ylabel(fig_config['ylabel'])
-        ax.set_xlabel(fig_config['xlabel'])
+        ax.set_xlabel(fig_config['xlabel'],fontsize=label_size)
+        ax.set_ylabel(fig_config['ylabel'],fontsize=27)
 
         ax.set_xticks(x_ticks)
         ax.set_xlim(0, len(labels) -1)  #设置 x轴范围
@@ -130,14 +130,14 @@ def draw():
         ax.spines['left'].set_position(fig_config["spine_config"]["left"])
         ax.spines['right'].set_position(fig_config["spine_config"]["right"])
 
-        ax.legend()
+        ax.legend(prop={'size': legend_size})
         
         
         #ax.bar_label(rects1, padding=3)
         #ax.bar_label(rects2, padding=3)
 
         fig.tight_layout()
-    
+        fig.set_figheight(line_fig_height)
         save_figure('cm_flow_line')
         plt.show()
     
