@@ -2,7 +2,6 @@ notebooks/data
 notebooks/cifar_net.pth
 .ipynb_checkpoints/
 .ssh
-.devcontainer
 **/__pycache__
 **/images
 id_rsa
